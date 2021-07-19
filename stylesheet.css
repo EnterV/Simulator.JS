@@ -1,0 +1,53 @@
+.body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: burlywood;
+    border: 1px solid black;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;   
+    width: 500px;
+    height: 300px;
+    border-radius: 4px;
+    /* display: flex; */
+}
+
+.body__titulo {
+    display: flex;
+    justify-content: center;
+}
+
+.form__campo__dinero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.form__campo__meses {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
+.form__campo__interes {
+    padding-top: 10px;
+    
+}
+
+.form__boton__calculo {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    justify-content: center;
+}
+
+.form__boton__calculo__1 {
+    margin-right: 2px;
+    border-radius: 4px;
+}
+
+.form__boton__calculo__2 {
+    margin-left: 3px;
+    border-radius: 4px;
+}
