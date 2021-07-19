@@ -1,124 +1,91 @@
-/* INGRESO DE DATOS PERSONALES Y SALUDO DE BIENVENIDA */
+let solicitarPrestamo = true;
+const interes = 1.25;
+const si = "si";
+const no = "no";
+let simulaciones = [];
+
 
 function obtenerNombre() {
-    
-    var obtenerN = prompt("Por favor, escriba su nombre:");
-    return obtenerN;
-  }
-
-  function obtenerApellido() {
-    
-    var obtenerA = prompt("Por favor, escriba su apellido:");
-    return obtenerA;
-  }
-
-  let nombre = obtenerNombre();
-
-  let apellido = obtenerApellido();
-
-function saludar() {
-
-    alert ("Hola, " + nombre + " " + apellido + "!");
+    return prompt("Por favor, escriba su nombre:");
 }
 
-if (nombre == null || nombre == '') {
-    alert("Por favor, introducí un nombre válido.");
+function obtenerApellido() {
+    return prompt("Por favor, escriba su apellido:");
 }
 
-if (apellido == null || apellido == '') {
-    alert("Por favor, introducí un apellido válido.");
-}else
-
-saludar();
-
-/* SOLICITUD DE PRESTAMO */
-
-let monto = parseInt(prompt("Por favor, ingresa el monto a solicitar"));
-
-let tiempo = parseInt(prompt("Por último, el tiempo de devolución (expresado en meses)"));
-
-const numero2 = 1.25
-
-function solicitudPrestamo (monto, tiempo){
-
-    do{
-    monto;
-
-    tiempo;
-    
-}while(monto == null || monto == "" || isNaN(monto) || tiempo == null || tiempo == ""|| isNaN(tiempo)); 
+function obtenerMonto () {
+    return parseInt(prompt("Por favor, ingresa el monto a solicitar"));
 }
 
-/* CALCULO DE TASA Y AMORTIZACION */
-
-function ingresoDeDatos (monto) {
-  
-    let resultado = monto * numero2;
-      
-    return resultado       
+function obtenerCuotas () {
+    return parseInt(prompt("Por último, el tiempo de devolución (expresado en meses)"));
 }
 
-let resultadoMultiplicacion = ingresoDeDatos(monto, numero2)
-
-function cuotaPrestamo (resultadoMultiplicacion) {
-
-    cuota = resultadoMultiplicacion / tiempo;
-
-    return cuota
+function calcularCostoMasInteres (monto) {
+    return monto * interes;   
 }
 
-let totalMensual = cuotaPrestamo();
+function calcularCostoPorCuota (costoConInteres, cuotas) {
+    return costoConInteres / cuotas;   
+}
 
-/* OUTPUT */
+function saludar(nombre, apellido) {
+    alert("Hola, " + nombre + " " + apellido + "!");
+}
 
-alert("El monto total a pagar será: $" + ingresoDeDatos(monto, numero2));
+function datosIniciales () {
+    const nombre = obtenerNombre();
+    const apellido = obtenerApellido();
+    saludar(nombre, apellido);
+}
 
-alert("Y el valor mensual de la cuota será: $" + cuotaPrestamo(resultadoMultiplicacion));
+datosIniciales();
 
-/* ARRAYS */
-
-class simulador {
-    constructor(nombre, apellido, resultadoMultiplicacion, totalMensual ) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.montoTotal = resultadoMultiplicacion;
-        this.totalCuota = totalMensual;
- 
+function consultarNuevoPrestamo () {
+    const respuestaUsuario = prompt("Desea solicitar una nueva cotizacion? 'Si-No'");
+    solicitarPrestamo = respuestaUsuario.toLowerCase() === si
+    if (respuestaUsuario.toLowerCase() != si && respuestaUsuario.toLowerCase() != no){
+        alert("Por favor, ingresa una respuesta correcta");
+        consultarNuevoPrestamo();
     }
 }
 
-let solicitarNuevoCredito;
-  
-    const arraysolicitantes= [];
-
-    function nuevoPrestamo(PrestamoAsolicitar) {
-    arraysolicitantes.push(PrestamoAsolicitar)
+function mostrarResultadoPrestamo (costoConInteres, costoPorCuota) {
+    alert("El monto total a pagar será: $" + costoConInteres);
+    alert("Y el valor mensual de la cuota será: $" + costoPorCuota);
 }
 
-function final () {
-
-
-    solicitarNuevoCredito = prompt("Desea solicitar una nueva cotizacion? 'Si-No'");
-
-    if (solicitarNuevoCredito.toUpperCase === "SI") {
-        let credito = new solicitante (this.nombre, this.apellido, this.montoTotal, this.totalCuota)
-        nuevoPrestamo (credito)
-
-    }else {
-        alert("Muchas gracias por su consulta, hasta pronto!")
+class simulacion {
+    constructor(monto, cuotas, costoConInteres, costoPorCuota) {
+        this.monto = monto ;
+        this.cuotas = cuotas ;
+        this.costoConInteres = costoConInteres;
+        this.costoPorCuota = costoPorCuota;
     }
 }
 
-final ();
+while(solicitarPrestamo) {
+    const monto = obtenerMonto();
+    const cuotas = obtenerCuotas();
+    const costoConInteres = calcularCostoMasInteres(monto);
+    const costoPorCuota = calcularCostoPorCuota(costoConInteres, cuotas);
+    const s = new simulacion(monto, cuotas, costoConInteres, costoPorCuota);
+    simulaciones.push(s);
+    simulaciones = simulaciones.sort(function (a, b){
+        return a.monto - b.monto;
+    /*     if(a.monto > b.monto){
+            return 1;  
+        }
+        if(a.monto < b.monto){
+            return -1;   
+        }
+        return 0 */
+    });
+    console.log(simulaciones);
+    localStorage.setItem('simulaciones', JSON.stringify(simulaciones));
+    mostrarResultadoPrestamo(costoConInteres, costoPorCuota);
+    consultarNuevoPrestamo();
+}   
 
-while(solicitarNuevoCredito.toUpperCase === "SI") {
-    obtenerNombre();
-    obtenerApellido();
-    
-    
-}
 
-function historialPrestamos () {
 
-    arraysolicitantes.forEach(credito => console.log(credito.nombre + "" + credito.apellido + ", total $" + montoTotal + " en cuotas de: $" + totalCuota));
-}
