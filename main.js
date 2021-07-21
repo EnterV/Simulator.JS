@@ -18,7 +18,7 @@ function obtenerMonto () {
 }
 
 function obtenerCuotas () {
-    return parseInt(prompt("Por último, el tiempo de devolución (expresado en meses)"));
+    return parseInt(prompt("Por último, introduzca el tiempo de devolución expresado en meses:"));
 }
 
 function calcularCostoMasInteres (monto) {
@@ -80,12 +80,33 @@ while(solicitarPrestamo) {
             return -1;   
         }
         return 0 */
-    });
+     });
     console.log(simulaciones);
     localStorage.setItem('simulaciones', JSON.stringify(simulaciones));
     mostrarResultadoPrestamo(costoConInteres, costoPorCuota);
     consultarNuevoPrestamo();
-}   
+}    
+
+
+/* DOM - PRUEBA */
+
+let parrafo = document.createElement('h1');
+
+parrafo.innerHTML = '<h1>Simulador de Prestamos</h1>';
+
+document.body.appendChild(parrafo);
+
+
+/* DATOS DE INPUTS - PRUEBA */
+
+document.getElementById('monto').value = '10';
+document.getElementById('meses').value = '2';
+
+/* DOM - ELIMINACION DE ELEMENTO */
+
+let prueba  = document.getElementById('form__boton__calculo');
+
+prueba.parentNode.removeChild(prueba);
 
 
 
