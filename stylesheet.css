@@ -6,7 +6,7 @@
     padding: 10px;
     font-size: 16px;   
     width: 500px;
-    height: 300px;
+    height: auto;
     border-radius: 4px;
     /* display: flex; */
 }
@@ -16,10 +16,23 @@
     justify-content: center;
 }
 
+.form__campo__nombre {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.form__campo__apellido {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
 .form__campo__dinero {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    padding-top: 10px;
 }
 
 .form__campo__meses {
@@ -38,8 +51,9 @@
 #form__boton__calculo {
     display: flex;
     justify-content: space-evenly;
-    padding-top: 10px;
+    padding-top: 20px;
     justify-content: center;
+    padding-bottom: 10px;
 }
 
 .form__boton__calculo__1 {

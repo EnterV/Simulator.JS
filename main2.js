@@ -1,32 +1,60 @@
-/* let solicitarPrestamo = true;
+let solicitarPrestamo = true;
 const interes = 1.25;
 const si = "si";
 const no = "no";
 let simulaciones = [];
+const title = document.getElementById('title')
 const campoNombre = document.getElementById("nombre")
 const campoApellido = document.getElementById('apellido')
 const campoMonto = document.getElementById('monto')
 const campoMes = document.getElementById('meses')
 const botonCalcular = document.getElementById('botonCalcular')
 
+function DatosPersonales () {
+    let nombre = campoNombre.value
+    let apellido = campoApellido.value
 
-function obtenerNombre() {
-    return prompt("Por favor, escriba su nombre:");
 }
 
-function obtenerApellido() {
-    return prompt("Por favor, escriba su apellido:");
+
+/* DOM - PRUEBA */
+
+/* let parrafo = document.createElement('h1');
+
+parrafo.innerHTML = '<h1>Simulador de Prestamos</h1>';
+
+document.body.appendChild(parrafo); */
+
+
+
+function calcularCostoMasInteres () {
+    let capital = campoMonto.value * interes
+    console.log(capital)
+    //return capital   
 }
 
-function obtenerMonto () {
-    return parseInt(prompt("Por favor, ingresa el monto a solicitar"));
+function calcularCostoMasInteres () {
+    let capital = campoMonto.value * interes
+    return capital 
 }
 
-function obtenerCuotas () {
-    return parseInt(prompt("Por último, introduzca el tiempo de devolución expresado en meses:"));
-}
+calcularCostoMasInteres();
 
-function calcularCostoMasInteres (monto) {
+
+botonCalcular.addEventListener('click', calcularCostoMasInteres)
+
+/* console.log(calcularCostoMasInteres()); */
+
+/* console.log(calcularCostoMasInteres(capital)); */
+
+
+/* botonCalcular.addEventListener('click', () => {
+    alert(calcularCostoMasInteres)
+}) */
+
+
+
+/* function calcularCostoMasInteres (monto) {
     return monto * interes;   
 }
 
@@ -83,5 +111,4 @@ while(solicitarPrestamo) {
     localStorage.setItem('simulaciones', JSON.stringify(simulaciones));
     mostrarResultadoPrestamo(costoConInteres, costoPorCuota);
     consultarNuevoPrestamo();
-}    
- */
+}     */
