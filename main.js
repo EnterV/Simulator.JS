@@ -1,75 +1,69 @@
-/* let solicitarPrestamo = true;
+let solicitarPrestamo = true;
 const interes = 1.25;
 const si = "si";
 const no = "no";
 let simulaciones = [];
-const campoNombre = document.getElementById("nombre")
-const campoApellido = document.getElementById('apellido')
-const campoMonto = document.getElementById('monto')
-const campoMes = document.getElementById('meses')
+const title = document.getElementById('title')
+const campoNombre = $('#nombre')
+const campoApellido = $('#apellido')
+const campoMonto = $('#monto')
+const campoMes = $('#meses')
 const botonCalcular = document.getElementById('botonCalcular')
+/* let display = document.getElementById('resultado') = calculoPrestamo */
 
-
-function obtenerNombre() {
-    return prompt("Por favor, escriba su nombre:");
+function datosPersonales () {   
+    let nombre = $('#nombre').val();
+    let apellido = $('#apellido').val();
+    alert('Bienvenido! ' + nombre + ' ' + apellido);
 }
 
-function obtenerApellido() {
-    return prompt("Por favor, escriba su apellido:");
+function datosPrestamo () {
+    let monto = $('#monto').val();
+    let cuotas = $('#meses').val();
+    alert('Estas solicitando: $' + monto + ' a pagar en ' + cuotas + ' cuotas');
 }
 
-function obtenerMonto () {
-    return parseInt(prompt("Por favor, ingresa el monto a solicitar"));
+function calculoPrestamo () {
+    let capital = $('#monto').val() * interes;
+    let total = capital / $('#meses').val();
+
+    alert('El total a pagar de tu prestamo es de: $' + capital + ' y el valor cuota será $' + total);
 }
 
-function obtenerCuotas () {
-    return parseInt(prompt("Por último, introduzca el tiempo de devolución expresado en meses:"));
+function nuevoPrestamo () {
+    let consulta = prompt('Desea solicitar una nueva cotización? SI/NO')
+
+    if (consulta.toLowerCase() === 'si') {
+        alert('ingresá tus datos para recibir una nueva cotización!')
+        
+    } else alert('Gracias por tu visita!')
 }
 
-function calcularCostoMasInteres (monto) {
-    return monto * interes;   
-}
 
-function calcularCostoPorCuota (costoConInteres, cuotas) {
-    return costoConInteres / cuotas;   
-}
+botonCalcular.addEventListener('click', datosPersonales)
 
-function saludar(nombre, apellido) {
-    alert("Hola, " + nombre + " " + apellido + "!");
-}
+botonCalcular.addEventListener('click', datosPrestamo)
 
-function datosIniciales () {
-    const nombre = obtenerNombre();
-    const apellido = obtenerApellido();
-    saludar(nombre, apellido);
-}
+botonCalcular.addEventListener('click', calculoPrestamo)
 
-datosIniciales();
+botonCalcular.addEventListener('click', nuevoPrestamo)
 
-function consultarNuevoPrestamo () {
-    const respuestaUsuario = prompt("Desea solicitar una nueva cotizacion? 'Si-No'");
-    solicitarPrestamo = respuestaUsuario.toLowerCase() === si
-    if (respuestaUsuario.toLowerCase() != si && respuestaUsuario.toLowerCase() != no){
-        alert("Por favor, ingresa una respuesta correcta");
-        consultarNuevoPrestamo();
-    }
-}
 
-function mostrarResultadoPrestamo (costoConInteres, costoPorCuota) {
-    alert("El monto total a pagar será: $" + costoConInteres);
-    alert("Y el valor mensual de la cuota será: $" + costoPorCuota);
-}
 
-class simulacion {
-    constructor(monto, cuotas, costoConInteres, costoPorCuota) {
-        this.monto = monto ;
-        this.cuotas = cuotas ;
+
+
+
+
+/* class simulacion {
+    constructor() {
+        this.monto = campoMonto.value ;
+        this.cuotas = campoMes.value ;
         this.costoConInteres = costoConInteres;
         this.costoPorCuota = costoPorCuota;
     }
 }
 
-while(solicitarPrestamo) {
+
     const monto = obtenerMonto();
     const cuotas = obtenerCuotas();
     const costoConInteres = calcularCostoMasInteres(monto);
@@ -81,7 +75,6 @@ while(solicitarPrestamo) {
     });
     console.log(simulaciones);
     localStorage.setItem('simulaciones', JSON.stringify(simulaciones));
-    mostrarResultadoPrestamo(costoConInteres, costoPorCuota);
-    consultarNuevoPrestamo();
-}    
- */
+    mostrarResultadoPrestamo(costoConInteres, costoPorCuota); */
+    
+  
