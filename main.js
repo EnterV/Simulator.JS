@@ -9,7 +9,6 @@ const campoApellido = $('#apellido')
 const campoMonto = $('#monto')
 const campoMes = $('#meses')
 const botonCalcular = document.getElementById('botonCalcular')
-/* let display = document.getElementById('resultado') = calculoPrestamo */
 
 function datosPersonales () {   
     let nombre = $('#nombre').val();
@@ -38,6 +37,13 @@ function nuevoPrestamo () {
         
     } else alert('Gracias por tu visita!')
 }
+
+$('#botonCalcular').click(function(e){
+    $('#' + e.currentTarget.parentElement.id).hide()
+
+$('#body').fadeIn(3000)
+
+})
 
 
 botonCalcular.addEventListener('click', datosPersonales)
