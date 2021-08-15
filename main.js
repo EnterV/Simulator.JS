@@ -1,4 +1,4 @@
-let solicitarPrestamo = true;
+/* let solicitarPrestamo = true;
 const interes = 1.25;
 const si = "si";
 const no = "no";
@@ -38,12 +38,7 @@ function nuevoPrestamo () {
     } else alert('Gracias por tu visita!')
 }
 
-$('#botonCalcular').click(function(e){
-    $('#' + e.currentTarget.parentElement.id).hide()
-
-$('#body').fadeIn(3000)
-
-})
+function 
 
 
 botonCalcular.addEventListener('click', datosPersonales)
@@ -52,7 +47,7 @@ botonCalcular.addEventListener('click', datosPrestamo)
 
 botonCalcular.addEventListener('click', calculoPrestamo)
 
-botonCalcular.addEventListener('click', nuevoPrestamo)
+botonCalcular.addEventListener('click', nuevoPrestamo) */
 
 
 
